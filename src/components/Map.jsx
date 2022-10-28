@@ -7,12 +7,11 @@ import {
     Polygon,
     MarkerClusterer,
     computeOffset,
-    
-    
-    
-
 } from '@react-google-maps/api';
 import axios from 'axios';
+import { EditControl} from 'react-leaflet-draw';
+import { MapContainer,FeatureGroup } from 'react-leaflet';
+// import { FeatureGroup,MapContainer } from 'react-leaflet';
 
 const DB_URL = 'http://localhost:3000/dealers';
 
@@ -85,11 +84,15 @@ const Map = ({data}) => {
     const handleMarker = (e)=>{        
         let brand = prompt("Please enter your car's brand", "BMW");
         if(brand){
-            setMarkers([...markers,{carId:Math.random(),Brand:brand,location:{lat:e.latLng.lat(),lng:e.latLng.lng()}}])
-            drawRect(e.latLng.lat(),e.latLng.lng(),5,10)
-            console.log(inside({lat:e.latLng.lat(),lng:e.latLng.lng()},polygonCords));
         }
     }
+    const purpleOptions = { color: 'purple' }
+    const polygon = [
+        [51.515, -0.09],
+        [51.52, -0.1],
+        [51.52, -0.12],
+      ]
+       
 
 
 
@@ -162,7 +165,7 @@ const handleRemoval = (e)=>{
     </div>
     <div className="map">
         {delalersLocation && 
-            <GoogleMap
+            <MapContainer
             zoom={10} 
             center={delalersLocation}
             mapContainerStyle={{width:'100vw',height:'70vh'}}
@@ -222,13 +225,17 @@ const handleRemoval = (e)=>{
                     
                         
                     }}
-                    onDblClick={(e)=>handleMarker(e)}
                     />
+    
+                        
+                        <Polygon pathOptions={purpleOptions} positions={polygon} />
+                       
+                    
 
                 </>
 
              
-            </GoogleMap>
+            </MapContainer>
         }
         </div>
         </>

@@ -54,7 +54,7 @@ function App() {
     }
 
   const {isLoaded} = useLoadScript({                                 //checks if completely loaded or not
-    googleMapsApiKey:'YOUR API KEY HERE',     //API key
+    googleMapsApiKey:'AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E',     //API key
     libraries:libraries
   })
 

@@ -11,6 +11,7 @@ import {
 
 } from '@react-google-maps/api';
 import axios from 'axios';
+import { MapContainer } from 'react-leaflet';
 
 const DB_URL = 'http://localhost:3000/dealers';
 
@@ -69,8 +70,9 @@ const handleSignUp = async()=>{
     <div className="map">
 
 
-            <GoogleMap
+            <MapContainer
             zoom={10} 
+            key="AIzaSyCY1oDgXTf55jiJBGLsiTsCgf9DyrlU66E"
             center={center}
             mapContainerStyle={{marginTop:30,width:'100vw',height:'70vh'}}
             options={options}
@@ -89,7 +91,7 @@ const handleSignUp = async()=>{
                     
                 }} />}
              
-            </GoogleMap>
+            </MapContainer>
         </div>
         </>
   )
